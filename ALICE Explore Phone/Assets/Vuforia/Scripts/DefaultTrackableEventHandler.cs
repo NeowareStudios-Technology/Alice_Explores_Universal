@@ -166,11 +166,13 @@ namespace Vuforia
             {
                 if (check == true)
                 {
-                    //mParser.videoPlayer.Pause();
-                    //mParser.audioSource.Pause();
+#if UNITY_IOS || UNITY_EDITOR
+                    mParser.videoPlayer.Pause();
+                    mParser.audioSource.Pause();
+#elif UNITY_ANDROID
                     mParser.easyPlayer.Pause();
+#endif
                 }
-
                 Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
                 string trackableName = mTrackableBehaviour.TrackableName;
                 analyticsControl.launchTimeTrack(true);
@@ -250,16 +252,22 @@ namespace Vuforia
                     // when target lost pause the video
                     if (!firstrun)
                     {
-                        //mParser.videoPlayer.Pause();
-                        //mParser.audioSource.Pause();
-                        mParser.easyPlayer.Pause();
+#if UNITY_IOS || UNITY_EDITOR
+                        mParser.videoPlayer.Pause();
+                        mParser.audioSource.Pause();
+#elif UNITY_ANDROID
+                    mParser.easyPlayer.Pause();
+#endif
                     }
 
-                    //mParser.videoPlayer.Pause();
-                    //mParser.audioSource.Pause();
+#if UNITY_IOS || UNITY_EDITOR
+                    mParser.videoPlayer.Pause();
+                    mParser.audioSource.Pause();
+#elif UNITY_ANDROID
                     mParser.easyPlayer.Pause();
+#endif
                 }
-                catch(NullReferenceException ex) { }
+                catch (NullReferenceException ex) { }
 
                 //			mParser.playIcon.gameObject.SetActive (false);
                 //			mParser.pauseIcon.gameObject.SetActive (false);
@@ -271,7 +279,7 @@ namespace Vuforia
                 //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " first run @ time: " + Time.time);
             }
         }
-        #endregion // PRIVATE_METHODS
+#endregion // PRIVATE_METHODS
 
     }
 

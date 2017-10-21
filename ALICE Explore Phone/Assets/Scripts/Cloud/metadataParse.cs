@@ -9,6 +9,7 @@ using UnityEngine.Video;
 using UnityEngine.Networking;
 
 public class metadataParse : MonoBehaviour {
+
 	
 	//in the dashboard, they'll have the option to put in contact info. 
 	public string emailContact = "null";
@@ -115,13 +116,24 @@ public class metadataParse : MonoBehaviour {
 			analyticsControl.addTargetFound(targetName + " - " + splitMetadata[1]);
 			break;
 		case "videoUrl":
-			videoGameObject.transform.localScale = new Vector3 (1f, 1f, 1f);
-			// store video link and start streaming the video in the unity videoplayer
-			videoLink = splitMetadata [1];
-            debugText.text += "Waiting for freeze...before coroutine @ time: " + Time.time + "\n";
-            //StartCoroutine(playVideo ());
-            StartCoroutine(EasyVideoPlay());
-			break;
+
+#if UNITY_IOS || UNITY_EDITOR
+                videoGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                // store video link and start streaming the video in the unity videoplayer
+                videoLink = splitMetadata[1];
+                debugText.text += "Waiting for freeze...before coroutine @ time: " + Time.time + "\n";
+                StartCoroutine(playVideo ());
+                
+
+#elif UNITY_ANDROID
+                videoGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                // store video link and start streaming the video in the unity videoplayer
+                videoLink = splitMetadata[1];
+                debugText.text += "Waiting for freeze...before coroutine @ time: " + Time.time + "\n";
+                StartCoroutine(EasyVideoPlay());
+                
+#endif
+                break;
         case "videoPreviewUrl":
             videoGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             videoGameObject_preview.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -140,9 +152,16 @@ public class metadataParse : MonoBehaviour {
             videoGameObject_preview.transform.position = new Vector3(0.0f, 0.0f, Convert.ToSingle(splitMetadata[1]));
             break;
 		case "videoResize":
-			//scale video according to metadata
-			videoGameObject.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]),Convert.ToSingle(splitMetadata[1]),Convert.ToSingle(splitMetadata[1]));
-            videoGameObject_preview.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]));
+                //scale video according to metadata
+#if UNITY_IOS || UNITY_EDITOR
+                videoGameObject.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]));
+                videoGameObject.transform.localScale = Vector3.Scale(videoGameObject.transform.localScale, new Vector3(1, -1, 1));
+
+#elif UNITY_ANDROID
+                videoGameObject.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]),Convert.ToSingle(splitMetadata[1]),Convert.ToSingle(splitMetadata[1]));                
+#endif
+
+                videoGameObject_preview.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]));
             break;
 		case "3durl":
             if(splitMetadata[1] != "none")
@@ -239,6 +258,7 @@ public class metadataParse : MonoBehaviour {
 
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
+        Debug.Log("Created the video player");
 
         //Add AudioSource
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -408,7 +428,7 @@ public class metadataParse : MonoBehaviour {
         pauseVideo = !pauseVideo;
         if (pauseVideo == true)
         {
-#if UNITY_IOS
+#if UNITY_IOS|| UNITY_EDITOR
             videoPlayer.Pause();
             audioSource.Pause();
 #endif
@@ -422,7 +442,7 @@ public class metadataParse : MonoBehaviour {
         }
         else
         {
-#if UNITY_IOS
+#if UNITY_IOS|| UNITY_EDITOR
             videoPlayer.Play();
             audioSource.Play();
 #endif
