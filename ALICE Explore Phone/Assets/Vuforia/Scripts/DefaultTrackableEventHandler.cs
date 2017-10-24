@@ -166,7 +166,7 @@ namespace Vuforia
             {
                 if (check == true)
                 {
-#if UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS
                     mParser.videoPlayer.Pause();
                     mParser.audioSource.Pause();
 #elif UNITY_ANDROID
@@ -252,7 +252,7 @@ namespace Vuforia
                     // when target lost pause the video
                     if (!firstrun)
                     {
-#if UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS
                         mParser.videoPlayer.Pause();
                         mParser.audioSource.Pause();
 #elif UNITY_ANDROID
@@ -260,7 +260,7 @@ namespace Vuforia
 #endif
                     }
 
-#if UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS
                     mParser.videoPlayer.Pause();
                     mParser.audioSource.Pause();
 #elif UNITY_ANDROID

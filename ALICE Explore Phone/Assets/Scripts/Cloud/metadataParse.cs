@@ -74,7 +74,7 @@ public class metadataParse : MonoBehaviour {
         videoGameObject_preview = transform.Find("videoCanvas_preview/preview").gameObject;
         videoTex_preview = videoGameObject_preview.GetComponent<RawImage>();
 
-        pauseIcon.gameObject.SetActive(true);
+        //pauseIcon.gameObject.SetActive(true);
     }
 	
 	//gets target name from defaultTrackableEventHandler and finds the metadata file
@@ -117,7 +117,7 @@ public class metadataParse : MonoBehaviour {
 			break;
 		case "videoUrl":
 
-#if UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS 
                 videoGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
                 // store video link and start streaming the video in the unity videoplayer
                 videoLink = splitMetadata[1];
@@ -125,7 +125,7 @@ public class metadataParse : MonoBehaviour {
                 StartCoroutine(playVideo ());
                 
 
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID|| UNITY_EDITOR 
                 videoGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
                 // store video link and start streaming the video in the unity videoplayer
                 videoLink = splitMetadata[1];
@@ -153,11 +153,11 @@ public class metadataParse : MonoBehaviour {
             break;
 		case "videoResize":
                 //scale video according to metadata
-#if UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS
                 videoGameObject.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]), Convert.ToSingle(splitMetadata[1]));
                 videoGameObject.transform.localScale = Vector3.Scale(videoGameObject.transform.localScale, new Vector3(1, -1, 1));
 
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID|| UNITY_EDITOR
                 videoGameObject.transform.localScale = new Vector3(Convert.ToSingle(splitMetadata[1]),Convert.ToSingle(splitMetadata[1]),Convert.ToSingle(splitMetadata[1]));                
 #endif
 
@@ -428,12 +428,12 @@ public class metadataParse : MonoBehaviour {
         pauseVideo = !pauseVideo;
         if (pauseVideo == true)
         {
-#if UNITY_IOS|| UNITY_EDITOR
+#if UNITY_IOS
             videoPlayer.Pause();
             audioSource.Pause();
 #endif
 
-#if UNITY_ANDROID
+			#if UNITY_ANDROID || UNITY_EDITOR
             easyPlayer.Pause();
 #endif
 
@@ -442,12 +442,12 @@ public class metadataParse : MonoBehaviour {
         }
         else
         {
-#if UNITY_IOS|| UNITY_EDITOR
+#if UNITY_IOS
             videoPlayer.Play();
             audioSource.Play();
 #endif
 
-#if UNITY_ANDROID
+			#if UNITY_ANDROID|| UNITY_EDITOR
             easyPlayer.Play();
 #endif
 

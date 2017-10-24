@@ -13,7 +13,7 @@ VideoClipImporter:
   startFrame: -1
   endFrame: -1
   frameCount: 211
-  frameRate: 29.970029830932617
+  frameRate: 29.969999313354492
   colorSpace: 0
   deinterlace: 0
   sourceFileSize: 696748
@@ -26,7 +26,7 @@ VideoClipImporter:
   sourceAudioSampleRate: 44ac0000
   targetSettings: {}
   output:
-    format: 1
+    format: 0
     settings:
       enableTranscoding: 0
       codec: 0
