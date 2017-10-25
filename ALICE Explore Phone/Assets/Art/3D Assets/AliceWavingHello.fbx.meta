@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 503409b61c70b4afba432625323a49e6
-timeCreated: 1508573954
+guid: 3553e52e988be4f3cbc282f8e2d6020d
+timeCreated: 1508894458
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -114,7 +114,7 @@ ModelImporter:
       takeName: C4D Animation Take
       firstFrame: 0
       lastFrame: 90
-      wrapMode: 0
+      wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0

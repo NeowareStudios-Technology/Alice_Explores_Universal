@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="HelloTag" size="100.000000 50.000000" />
+    <ImageTarget name="AliceLogo" size="100.000000 55.956112" />
+    <ImageTarget name="Hola" size="100.000000 74.093262" />
+    <ImageTarget name="Alice_Outline" size="100.000000 39.178356" />
     <ImageTarget name="Powered_by_Launchable" size="1.000000 1.000000" />
-    <ImageTarget name="Alice_Outline" size="1.000000 0.481409" />
-    <ImageTarget name="Alicetest" size="100.000000 48.128342" />
   </Tracking>
 </QCARConfig>

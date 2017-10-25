@@ -198,6 +198,7 @@
     <None Include="Assets\Plugins\StansAssets\Modules\AndroidNative\Documentation\AN_VersionNotes.txt" />
     <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\Android\google_play\play-services-analytics.jar.txt" />
     <None Include="Assets\Scripts\UI\MPMP\Plugins\x86\lua\http\requests\README.txt" />
+    <None Include="Assets\StreamingAssets\Vuforia\Launchable_Local_Storage.xml" />
     <None Include="Assets\EasyMovieTexture\readme.txt" />
     <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\IOS\MNP_UIController.mm.txt" />
     <None Include="Assets\Plugins\StansAssets\Modules\GoogleAnalytics\Documentation\ReadMe.txt" />
@@ -292,7 +293,6 @@
     <None Include="Assets\Scripts\UI\MPMP\Plugins\x86\lua\http\requests\status.xml" />
     <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\IOS\ISN_UserNotifications.h.txt" />
     <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\Android\fitness\an_fitness.jar.txt" />
-    <None Include="Assets\StreamingAssets\Vuforia\Launchable_Local_Storage.xml" />
     <Reference Include="Assembly-UnityScript-firstpass">
       <HintPath>/Users/admin/Documents/GitHub/Alice_Phone/ALICE Explore Phone/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
     </Reference>
